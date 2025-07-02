@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Newsletter from '../components/Newsletter.astro';
+---
+
+<Layout title="About - RoughNotes" description="Learn about the writer behind RoughNotes and the inspiration for these stories and poems">
+  <div class="about-page">
+    <div class="about-header">
+      <h1 class="page-title">About Me</h1>
+    </div>
+    
+    <div class="about-content">
+      <div class="about-text">
+        <div class="about-section">
+          <h2>Welcome to My Literary World</h2>
+          <p>
+            Hello, and welcome to RoughNotes. I'm someone who loves to read and write poems, 
+            though I'm not a professional writer by any means. This is simply my corner of the 
+            internet where words find their home and stories come to life.
+          </p>
+          <p>
+            I sometimes share my personal experiences as well, weaving them into stories and poems 
+            that reflect the beauty and complexity of everyday life. Writing has become my way of 
+            making sense of the world around me, one word at a time.
+          </p>
+        </div>
+
+        <div class="about-section">
+          <h2>Why I Created This Space</h2>
+          <p>
+            I created this page because at times I just want to share things, but I don't know 
+            with whom to share them. There's something magical about putting your thoughts into 
+            words and releasing them into the world, hoping they might resonate with someone, 
+            somewhere.
+          </p>
+          <p>
+            Maybe you've felt that way too—having thoughts, feelings, or stories that feel too 
+            precious to keep locked away, yet too personal to share with just anyone. This space 
+            is for those moments, those quiet revelations that deserve to be heard.
+          </p>
+        </div>
+
+        <div class="about-section">
+          <h2>My Writing Journey</h2>
+          <p>
+            My love for words began with reading. Books were my escape, my teachers, my friends 
+            during quiet afternoons. Slowly, I discovered that creating those worlds myself 
+            brought even greater joy than discovering them in others' work.
+          </p>
+          <p>
+            I find inspiration everywhere—in conversations overheard on buses, in the way morning 
+            light filters through my window, in the small moments that make up our days. Life is 
+            full of stories waiting to be told, and I'm grateful to have found a way to share 
+            some of them with you.
+          </p>
+        </div>
+
+        <div class="about-section">
+          <h2>What You'll Find Here</h2>
+          <p>
+            This space is home to my stories and poems, ranging from gentle fiction to personal 
+            reflections, often exploring themes of connection, discovery, and the magic hidden 
+            in everyday life. Some pieces come from my imagination, others from my own experiences 
+            walking through this beautiful, complicated world.
+          </p>
+          <p>
+            I hope my words resonate with you, inspire you, or simply provide a moment of 
+            connection in your day. Thank you for taking the time to visit and read. Your 
+            presence here means more than you know.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <Newsletter />
+  </div>
+</Layout>
+
+<style>
+  .about-page {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .about-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  .about-content {
+    background: var(--card-background);
+    border-radius: 1rem;
+    padding: 3rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    margin-bottom: 3rem;
+  }
+
+  .about-section {
+    margin-bottom: 3rem;
+  }
+
+  .about-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .about-section h2 {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .about-section p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: 2.5rem;
+    }
+    
+    .about-content {
+      padding: 2rem 1.5rem;
+    }
+    
+    .about-section h2 {
+      font-size: 1.5rem;
+    }
+    
+    .about-section p {
+      font-size: 1rem;
+    }
+  }
+</style>

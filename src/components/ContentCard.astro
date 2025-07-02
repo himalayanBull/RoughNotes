@@ -1,0 +1,100 @@
+---
+export interface Props {
+  title: string;
+  excerpt: string;
+  date: string;
+  type: 'story' | 'poem';
+  slug: string;
+}
+
+const { title, excerpt, date, type, slug } = Astro.props;
+---
+
+<article class="content-card">
+  <div class="content-header">
+    <span class="content-type">{type}</span>
+    <time class="content-date">{date}</time>
+  </div>
+  <h3 class="content-title">
+    <a href={`/${type === 'story' ? 'stories' : 'poems'}/${slug}`}>{title}</a>
+  </h3>
+  <p class="content-excerpt">{excerpt}</p>
+  <a href={`/${type === 'story' ? 'stories' : 'poems'}/${slug}`} class="read-more">
+    Read {type === 'story' ? 'Story' : 'Poem'} →
+  </a>
+</article>
+
+<style>
+  .content-card {
+    background: var(--card-background);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+  }
+
+  .content-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
+  }
+
+  .content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .content-type {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  .content-date {
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+  }
+
+  .content-title a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .content-title a:hover {
+    color: var(--accent-color);
+  }
+
+  .content-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .content-excerpt {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .read-more {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .read-more:hover {
+    color: #A0522D;
+  }
+</style>

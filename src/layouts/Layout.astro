@@ -1,0 +1,190 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "A collection of stories and poems" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/" class="nav-logo">RoughNotes</a>
+        <div class="nav-links">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/stories" class="nav-link">Stories</a>
+          <a href="/poems" class="nav-link">Poems</a>
+          <a href="/about" class="nav-link">About</a>
+        </div>
+      </div>
+    </nav>
+    
+    <main class="main">
+      <slot />
+    </main>
+    
+    <footer class="footer">
+      <div class="footer-container">
+        <p>&copy; 2025 RoughNotes. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --primary-color: #2C1810;
+    --accent-color: #8B4513;
+    --secondary-color: #D2B48C;
+    --background-color: #F5F1EB;
+    --card-background: #FFFFFF;
+    --text-primary: #2C1810;
+    --text-secondary: #5D4E37;
+    --text-muted: #8B7355;
+    --border-color: #E5DDD5;
+    --shadow: 0 4px 6px rgba(44, 24, 16, 0.1);
+    --shadow-hover: 0 8px 25px rgba(44, 24, 16, 0.15);
+    
+    --font-serif: 'Crimson Text', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-serif);
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--background-color);
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav {
+    background: var(--card-background);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .nav-logo:hover {
+    color: var(--accent-color);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    font-family: var(--font-sans);
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: var(--accent-color);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+  }
+
+  .main {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+  }
+
+  .footer {
+    background: var(--primary-color);
+    color: var(--background-color);
+    padding: 2rem 0;
+    margin-top: 4rem;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+    font-family: var(--font-sans);
+  }
+
+  @media (max-width: 768px) {
+    .nav-container {
+      padding: 0 1rem;
+    }
+    
+    .nav-links {
+      gap: 1rem;
+    }
+    
+    .nav-link {
+      font-size: 0.9rem;
+    }
+    
+    .main {
+      padding: 1rem;
+    }
+  }
+</style>
