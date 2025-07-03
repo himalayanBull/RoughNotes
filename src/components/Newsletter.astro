@@ -7,7 +7,7 @@
     <p class="newsletter-description">
       Subscribe to receive new stories and poems directly in your inbox. Join our community of readers who appreciate the beauty of words.
     </p>
-    <form class="newsletter-form" action="#" method="post">
+    <form class="newsletter-form" id="newsletter-form">
       <div class="form-group">
         <input 
           type="email" 
@@ -15,6 +15,7 @@
           placeholder="Enter your email address" 
           required 
           class="email-input"
+          id="email-input"
         />
         <button type="submit" class="subscribe-btn">Subscribe</button>
       </div>
@@ -22,8 +23,55 @@
         No spam, just stories and poems. Unsubscribe anytime.
       </p>
     </form>
+    <div id="newsletter-message" class="newsletter-message" style="display: none;"></div>
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('newsletter-form');
+    const emailInput = document.getElementById('email-input');
+    const messageDiv = document.getElementById('newsletter-message');
+    
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const email = emailInput.value.trim();
+        
+        if (!email) {
+          showMessage('Please enter your email address.', 'error');
+          return;
+        }
+        
+        if (!isValidEmail(email)) {
+          showMessage('Please enter a valid email address.', 'error');
+          return;
+        }
+        
+        // Simulate subscription (since we don't have a backend)
+        showMessage('Thank you for subscribing! We\'ll be in touch soon.', 'success');
+        emailInput.value = '';
+      });
+    }
+    
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+    
+    function showMessage(text, type) {
+      messageDiv.textContent = text;
+      messageDiv.className = `newsletter-message ${type}`;
+      messageDiv.style.display = 'block';
+      
+      // Hide message after 5 seconds
+      setTimeout(() => {
+        messageDiv.style.display = 'none';
+      }, 5000);
+    }
+  });
+</script>
 
 <style>
   .newsletter {
@@ -56,7 +104,7 @@
   }
 
   .newsletter-form {
-    margin-bottom: 0;
+    margin-bottom: 1rem;
   }
 
   .form-group {
@@ -115,6 +163,26 @@
     opacity: 0.8;
     margin: 0;
     font-family: var(--font-sans);
+  }
+
+  .newsletter-message {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+
+  .newsletter-message.success {
+    background: rgba(34, 197, 94, 0.2);
+    color: #16a34a;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  .newsletter-message.error {
+    background: rgba(239, 68, 68, 0.2);
+    color: #dc2626;
+    border: 1px solid rgba(239, 68, 68, 0.3);
   }
 
   @media (max-width: 768px) {
