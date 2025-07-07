@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Newsletter from '../components/Newsletter.astro';
+import BuyMeCoffee from '../components/BuyMeCoffee.astro';
 ---
 
 <Layout title="About - RoughNotes" description="Learn about the writer behind RoughNotes and the inspiration for these stories and poems">
@@ -69,6 +70,23 @@ import Newsletter from '../components/Newsletter.astro';
             presence here means more than you know.
           </p>
         </div>
+
+        <div class="about-section support-section">
+          <h2>Support My Work</h2>
+          <p>
+            If my writing brings you joy, comfort, or inspiration, consider supporting my work. 
+            Every contribution helps me continue creating and sharing these stories and poems 
+            with readers like you.
+          </p>
+          <div class="support-button">
+            <BuyMeCoffee 
+              username="roughnotes" 
+              size="medium" 
+              theme="orange" 
+              message="Support my writing ☕"
+            />
+          </div>
+        </div>
       </div>
     </div>
     
@@ -130,6 +148,20 @@ import Newsletter from '../components/Newsletter.astro';
     margin-bottom: 0;
   }
 
+  .support-section {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #E6D3B7 100%);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .support-button {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
   @media (max-width: 768px) {
     .page-title {
       font-size: 2.5rem;
@@ -145,6 +177,10 @@ import Newsletter from '../components/Newsletter.astro';
     
     .about-section p {
       font-size: 1rem;
+    }
+
+    .support-section {
+      padding: 1.5rem;
     }
   }
 </style>

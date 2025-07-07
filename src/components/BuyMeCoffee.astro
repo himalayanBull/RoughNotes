@@ -1,0 +1,186 @@
+---
+export interface Props {
+  username?: string;
+  size?: 'small' | 'medium' | 'large';
+  theme?: 'default' | 'orange' | 'red' | 'white' | 'yellow' | 'blue' | 'black';
+  message?: string;
+}
+
+const { 
+  username = "roughnotes", 
+  size = "medium",
+  theme = "default",
+  message = "Support my writing"
+} = Astro.props;
+
+const sizeClasses = {
+  small: 'btn-small',
+  medium: 'btn-medium', 
+  large: 'btn-large'
+};
+
+const themeClasses = {
+  default: 'btn-default',
+  orange: 'btn-orange',
+  red: 'btn-red',
+  white: 'btn-white',
+  yellow: 'btn-yellow',
+  blue: 'btn-blue',
+  black: 'btn-black'
+};
+---
+
+<div class="buy-me-coffee">
+  <a 
+    href={`https://www.buymeacoffee.com/${username}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    class={`coffee-btn ${sizeClasses[size]} ${themeClasses[theme]}`}
+  >
+    <svg class="coffee-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 21h20v-2H2v2zm1.15-4.05L4 15l.85 1.95.85-1.95L6.55 17l.85-1.95L8.25 17l.85-1.95L10 17l.85-1.95L11.7 17l.85-1.95L13.4 17l.85-1.95L15.1 17l.85-1.95L16.8 17l.85-1.95L18.5 17l.85-1.95L20.2 17l.85-1.95L22 17v-2c0-4.97-4.03-9-9-9H9c-4.97 0-9 4.03-9 9v2l2.15-2.05z" fill="currentColor"/>
+      <path d="M20 8V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2z" fill="currentColor"/>
+    </svg>
+    <span class="coffee-text">{message}</span>
+  </a>
+</div>
+
+<style>
+  .buy-me-coffee {
+    display: inline-block;
+  }
+
+  .coffee-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    border: none;
+    cursor: pointer;
+  }
+
+  .coffee-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .coffee-icon {
+    width: 1.2em;
+    height: 1.2em;
+    flex-shrink: 0;
+  }
+
+  .coffee-text {
+    white-space: nowrap;
+  }
+
+  /* Size variants */
+  .btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-medium {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+
+  /* Theme variants */
+  .btn-default {
+    background: #FFDD00;
+    color: #000000;
+  }
+
+  .btn-default:hover {
+    background: #FFCC00;
+    color: #000000;
+  }
+
+  .btn-orange {
+    background: #FF813F;
+    color: #FFFFFF;
+  }
+
+  .btn-orange:hover {
+    background: #FF6B1A;
+    color: #FFFFFF;
+  }
+
+  .btn-red {
+    background: #FF5F5F;
+    color: #FFFFFF;
+  }
+
+  .btn-red:hover {
+    background: #FF4444;
+    color: #FFFFFF;
+  }
+
+  .btn-white {
+    background: #FFFFFF;
+    color: #000000;
+    border: 2px solid #DDDDDD;
+  }
+
+  .btn-white:hover {
+    background: #F5F5F5;
+    color: #000000;
+  }
+
+  .btn-yellow {
+    background: #FFDD00;
+    color: #000000;
+  }
+
+  .btn-yellow:hover {
+    background: #FFCC00;
+    color: #000000;
+  }
+
+  .btn-blue {
+    background: #5F7FFF;
+    color: #FFFFFF;
+  }
+
+  .btn-blue:hover {
+    background: #4A6FFF;
+    color: #FFFFFF;
+  }
+
+  .btn-black {
+    background: #000000;
+    color: #FFFFFF;
+  }
+
+  .btn-black:hover {
+    background: #333333;
+    color: #FFFFFF;
+  }
+
+  @media (max-width: 768px) {
+    .btn-large {
+      padding: 0.875rem 1.75rem;
+      font-size: 1rem;
+    }
+    
+    .btn-medium {
+      padding: 0.625rem 1.25rem;
+      font-size: 0.9rem;
+    }
+    
+    .btn-small {
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+    }
+  }
+</style>

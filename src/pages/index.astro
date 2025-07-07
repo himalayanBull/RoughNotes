@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import ContentCard from '../components/ContentCard.astro';
 import Newsletter from '../components/Newsletter.astro';
+import BuyMeCoffee from '../components/BuyMeCoffee.astro';
 import { getFeaturedContent } from '../lib/supabase';
 
 const featuredContent = await getFeaturedContent();
@@ -31,6 +32,24 @@ const featuredContent = await getFeaturedContent();
   </section>
   
   <Newsletter />
+  
+  <section class="support-section">
+    <div class="support-content">
+      <h2>Support My Writing</h2>
+      <p>
+        If you enjoy reading my stories and poems, consider supporting my work. 
+        Your support helps me continue creating and sharing these literary pieces with the world.
+      </p>
+      <div class="support-actions">
+        <BuyMeCoffee 
+          username="roughnotes" 
+          size="large" 
+          theme="orange" 
+          message="Buy me a coffee ☕"
+        />
+      </div>
+    </div>
+  </section>
   
   <section class="about-preview">
     <div class="about-content">
@@ -63,6 +82,40 @@ const featuredContent = await getFeaturedContent();
     gap: 2rem;
   }
 
+  .support-section {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #E6D3B7 100%);
+    border-radius: 1rem;
+    padding: 3rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+  }
+
+  .support-content h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .support-content p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .support-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
   .about-preview {
     background: var(--card-background);
     border-radius: 1rem;
@@ -93,12 +146,21 @@ const featuredContent = await getFeaturedContent();
       grid-template-columns: 1fr;
     }
     
-    .about-preview {
+    .about-preview, .support-section {
       padding: 2rem 1rem;
     }
     
     .section-title {
       font-size: 2rem;
+    }
+    
+    .support-content h2 {
+      font-size: 1.75rem;
+    }
+    
+    .support-actions {
+      flex-direction: column;
+      align-items: center;
     }
   }
 </style>
