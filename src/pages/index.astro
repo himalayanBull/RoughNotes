@@ -35,19 +35,27 @@ const featuredContent = await getFeaturedContent();
   
   <section class="support-section">
     <div class="support-content">
-      <h2>Support My Writing</h2>
+      <div class="support-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+        </svg>
+      </div>
+      <h2>Support My Writing Journey</h2>
       <p>
-        If you enjoy reading my stories and poems, consider supporting my work. 
-        Your support helps me continue creating and sharing these literary pieces with the world.
+        If my stories and poems touch your heart or inspire your day, consider supporting my creative work. 
+        Every contribution helps me dedicate more time to crafting the words that connect us all.
       </p>
       <div class="support-actions">
         <BuyMeCoffee 
           username="roughnotes" 
           size="large" 
-          theme="orange" 
+          variant="coffee" 
           message="Buy me a coffee ☕"
         />
       </div>
+      <p class="support-note">
+        Your support means the world to me and helps keep these stories flowing.
+      </p>
     </div>
   </section>
   
@@ -83,26 +91,54 @@ const featuredContent = await getFeaturedContent();
   }
 
   .support-section {
-    background: linear-gradient(135deg, var(--secondary-color) 0%, #E6D3B7 100%);
-    border-radius: 1rem;
-    padding: 3rem;
+    background: linear-gradient(135deg, var(--card-background) 0%, #F8F5F0 100%);
+    border-radius: 1.5rem;
+    padding: 4rem 3rem;
     text-align: center;
     margin-bottom: 4rem;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-hover);
     border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .support-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(139, 69, 19, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(210, 180, 140, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .support-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .support-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1.5rem;
+    color: var(--accent-color);
+    opacity: 0.8;
   }
 
   .support-content h2 {
-    font-size: 2rem;
+    font-size: 2.25rem;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
     font-weight: 600;
+    line-height: 1.2;
   }
 
   .support-content p {
     font-size: 1.125rem;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
@@ -112,8 +148,15 @@ const featuredContent = await getFeaturedContent();
   .support-actions {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .support-note {
+    font-size: 0.95rem !important;
+    color: var(--text-muted) !important;
+    font-style: italic;
+    margin-bottom: 0 !important;
+    opacity: 0.8;
   }
 
   .about-preview {
@@ -147,7 +190,7 @@ const featuredContent = await getFeaturedContent();
     }
     
     .about-preview, .support-section {
-      padding: 2rem 1rem;
+      padding: 2.5rem 1.5rem;
     }
     
     .section-title {
@@ -155,12 +198,16 @@ const featuredContent = await getFeaturedContent();
     }
     
     .support-content h2 {
-      font-size: 1.75rem;
+      font-size: 1.875rem;
     }
     
-    .support-actions {
-      flex-direction: column;
-      align-items: center;
+    .support-content p {
+      font-size: 1rem;
+    }
+    
+    .support-icon {
+      width: 40px;
+      height: 40px;
     }
   }
 </style>

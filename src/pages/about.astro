@@ -72,17 +72,18 @@ import BuyMeCoffee from '../components/BuyMeCoffee.astro';
         </div>
 
         <div class="about-section support-section">
-          <h2>Support My Work</h2>
+          <h2>Support My Creative Work</h2>
           <p>
             If my writing brings you joy, comfort, or inspiration, consider supporting my work. 
             Every contribution helps me continue creating and sharing these stories and poems 
-            with readers like you.
+            with readers like you. Your support allows me to dedicate more time to the craft 
+            I love and the community we're building together.
           </p>
           <div class="support-button">
             <BuyMeCoffee 
               username="roughnotes" 
               size="medium" 
-              theme="orange" 
+              variant="primary" 
               message="Support my writing ☕"
             />
           </div>
@@ -149,15 +150,16 @@ import BuyMeCoffee from '../components/BuyMeCoffee.astro';
   }
 
   .support-section {
-    background: linear-gradient(135deg, var(--secondary-color) 0%, #E6D3B7 100%);
+    background: linear-gradient(135deg, var(--background-color) 0%, #F0E6D6 100%);
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 2.5rem;
     text-align: center;
     margin-top: 2rem;
+    border: 1px solid var(--border-color);
   }
 
   .support-button {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
   }
@@ -180,7 +182,7 @@ import BuyMeCoffee from '../components/BuyMeCoffee.astro';
     }
 
     .support-section {
-      padding: 1.5rem;
+      padding: 2rem 1.5rem;
     }
   }
 </style>
